@@ -9,5 +9,19 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "categories": [
+    {
+      "id": "1",
+      "title": "a comment about post 1",
+      "prefix": "1",
+      "img": "skks"
+    },
+    {
+      "id": "2",
+      "title": "another comment about post 1",
+      "prefix": "1",
+      "img": "skwkkme"
+    }
+  ]
 }
