@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import thunkGetCategories from "./thunk/thunkCategories";
+import {thunkGetCategories} from "./thunk/thunkCategories";
+import { TLoading } from "src/types/shared";
+import { TCategory } from "src/types/category";
 
 interface ICategoriesState {
-  records: Array<{ id: number; title: string; prefix: string; img: string }>;
-  loading: "idle" | "pending" | "succeded" | "failed";
+  records: Array<TCategory>;
+  loading: TLoading;
   error: string | null;
 }
 
@@ -23,15 +25,14 @@ const categoriesSlice = createSlice({
       state.error = null;
     });
     builder.addCase(thunkGetCategories.fulfilled, (state, action) => {
-      state.loading = "succeded";
+      state.loading = "succeeded";
       state.records = action.payload;
     });
     builder.addCase(thunkGetCategories.rejected, (state, action) => {
       state.loading = "failed";
-      state.error = action.payload as string; 
+      state.error = action.error.message as string;
     });
   },
 });
 
-export { thunkGetCategories };
 export default categoriesSlice.reducer;

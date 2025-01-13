@@ -12,7 +12,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -23,11 +22,11 @@ const router = createBrowserRouter([
         element: <Categories />,
       },
       {
-        path: "products/:prefix",
+        path: "categories/products/:prefix",
         element: <Products />,
-        loader: (params) => {
-          console.log(params.params.prefix);
-          if(typeof params.params.prefix !== "string" || !/^[a-z]+$/i.test(params.params.prefix)){
+        loader: ({params}) => {
+          console.log(params.prefix);
+          if(typeof params.prefix !== "string" || !/^[a-z]+$/i.test(params.prefix)){
             throw new Response("bad request",{
               statusText:"Category not found",
               status:400

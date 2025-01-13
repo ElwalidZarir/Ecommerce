@@ -2,13 +2,11 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 const { category, categoryImg, categoryTitle } = styles;
 
-
 interface IProps{
   title:string,
   img:string,
   prefix:string
 }
-
 
 const Category = ({title, img, prefix}: IProps) => {
 

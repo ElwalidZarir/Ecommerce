@@ -1,22 +1,24 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Category } from "@components/ecommerce";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { thunkGetCategories } from "@store/categories/categoriesSlice";
+import { thunkGetCategories } from "@store/categories/thunk/thunkCategories";
 import { useEffect } from "react";
+import { Loading } from "@components/feedback";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
-  const { loading, error, records } = useAppSelector(
-    (state) => state.categories
-  );
+  const { loading, error, records } =
+    useAppSelector((state) => state.categories) || {};
   console.log(records);
 
   useEffect(() => {
-    dispatch(thunkGetCategories());
-  }, [dispatch]);
+    if (!records.length) {
+      dispatch(thunkGetCategories());
+    }
+  }, [dispatch, records]);
 
   const categoriesList =
-    records.length > 0
+    records?.length > 0
       ? records.map((record) => {
           return (
             <Col
@@ -33,7 +35,9 @@ const Categories = () => {
 
   return (
     <Container>
-      <Row>{categoriesList}</Row>
+      <Loading loading={loading} error={error}>
+        <Row>{categoriesList}</Row>
+      </Loading>
     </Container>
   );
 };
