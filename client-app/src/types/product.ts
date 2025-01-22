@@ -4,4 +4,5 @@ export type TProduct = {
     cat_prefx : string;
     img: string;
     price: number;
+    quatity?:number;
 }

@@ -6,6 +6,7 @@ import thunkGetProductsByCatPrefix from "@store/products/thunk/thunkProductsByCa
 import { useParams } from "react-router-dom";
 import { productsCleanUp } from "@store/products/productsSlice";
 import { Loading } from "@components/feedback";
+import { GridList } from "@components/common";
 
 const Products = () => {
   const params = useParams();
@@ -21,26 +22,15 @@ const Products = () => {
   }, [dispatch, params]);
   console.log(records);
 
-  const ProductsList =
-    records?.length > 0
-      ? records.map((record) => {
-          return (
-            <Col
-              xs={6}
-              md={3}
-              key={record.id}
-              className="d-flex justify-content-center mb-5 mt-2"
-            >
-              <Product {...record} />
-            </Col>
-          );
-        })
-      : "there are no products";
-
   return (
     <Container>
       <Loading loading={loading} error={error}>
-        <Row>{ProductsList}</Row>
+        <GridList
+          records={records}
+          renderItem={(record) => {
+            return <Product {...record} />;
+          }}
+        />
       </Loading>
     </Container>
   );

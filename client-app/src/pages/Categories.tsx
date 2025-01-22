@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { thunkGetCategories } from "@store/categories/thunk/thunkCategories";
 import { useEffect } from "react";
 import { Loading } from "@components/feedback";
+import { GridList } from "@components/common";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -17,26 +18,10 @@ const Categories = () => {
     }
   }, [dispatch, records]);
 
-  const categoriesList =
-    records?.length > 0
-      ? records.map((record) => {
-          return (
-            <Col
-              xs={6}
-              md={3}
-              key={record.id}
-              className="d-flex justify-content-center mb-5 mt-2"
-            >
-              <Category {...record} />
-            </Col>
-          );
-        })
-      : "there are co categories";
-
   return (
     <Container>
       <Loading loading={loading} error={error}>
-        <Row>{categoriesList}</Row>
+        <GridList records={records} renderItem = {(record)=>{ return <Category {...record} />;}} />
       </Loading>
     </Container>
   );
