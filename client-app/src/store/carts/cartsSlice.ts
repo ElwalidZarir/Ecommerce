@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "@store/index";
 import { TProduct } from "src/types/product";
-
+import {getCartTotalSelector} from "@store/carts/selectors"
 interface ICartState {
   items: { [key: number]: number };
   productsFullInfos: TProduct[];
@@ -17,14 +18,16 @@ const cartsSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const id = action.payload;
-      if(state.items[id]){
+      if (state.items[id]) {
         state.items[id]++;
-      } else{
-        state.items[id] = 1
+      } else {
+        state.items[id] = 1;
       }
     },
   },
 });
 
-export const {addToCart} = cartsSlice.actions 
+
+export { getCartTotalSelector };
+export const { addToCart } = cartsSlice.actions;
 export default cartsSlice.reducer;
