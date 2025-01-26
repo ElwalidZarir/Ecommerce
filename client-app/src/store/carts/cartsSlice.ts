@@ -1,5 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "@store/index";
+import { createSlice } from "@reduxjs/toolkit";
 import { TProduct } from "src/types/product";
 import {getCartTotalSelector} from "@store/carts/selectors"
 interface ICartState {
@@ -26,7 +25,6 @@ const cartsSlice = createSlice({
     },
   },
 });
-
 
 export { getCartTotalSelector };
 export const { addToCart } = cartsSlice.actions;
