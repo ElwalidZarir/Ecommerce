@@ -10,7 +10,6 @@ const getCartTotalSelector = createSelector(
       },
       0
     );
-    console.log("ssl");
     return totalQuantity;
   }
 );
