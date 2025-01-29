@@ -10,7 +10,6 @@ const Categories = () => {
   const dispatch = useAppDispatch();
   const { loading, error, records } =
     useAppSelector((state) => state.categories) || {};
-  console.log(records);
 
   useEffect(() => {
     if (!records.length) {
@@ -21,7 +20,12 @@ const Categories = () => {
   return (
     <Container>
       <Loading loading={loading} error={error}>
-        <GridList records={records} renderItem = {(record)=>{ return <Category {...record} />;}} />
+        <GridList
+          records={records}
+          renderItem={(record) => {
+            return <Category {...record} />;
+          }}
+        />
       </Loading>
     </Container>
   );

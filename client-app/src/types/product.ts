@@ -5,4 +5,5 @@ export type TProduct = {
     img: string;
     price: number;
     quatity?:number;
+    max:number
 }

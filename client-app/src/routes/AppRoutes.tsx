@@ -25,7 +25,6 @@ const router = createBrowserRouter([
         path: "categories/products/:prefix",
         element: <Products />,
         loader: ({params}) => {
-          console.log(params.prefix);
           if(typeof params.prefix !== "string" || !/^[a-z]+$/i.test(params.prefix)){
             throw new Response("bad request",{
               statusText:"Category not found",

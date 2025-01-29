@@ -14,13 +14,14 @@ const Products = () => {
   const { loading, error, records } =
     useAppSelector((state) => state.products) || {};
 
+    console.log(params);
+    
   useEffect(() => {
     dispatch(thunkGetProductsByCatPrefix(params.prefix as string));
     return () => {
       dispatch(productsCleanUp());
     };
   }, [dispatch, params]);
-  console.log(records);
 
   return (
     <Container>
