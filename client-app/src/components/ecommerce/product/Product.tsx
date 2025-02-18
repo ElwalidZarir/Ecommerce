@@ -33,7 +33,7 @@ const Product = ({ id, title, max, img, price }: IProps) => {
     return () => clearTimeout(debounce);
   }, [isBtnDisabled]);
 
-  const remainingItems = max - (items[id]??0)
+  const remainingItems = max - (items[id] ?? 0);
 
   const addToCartHandler = () => {
     if (items[id] < max || !items[id]) {

@@ -2,7 +2,7 @@ import { useAppSelector } from "@store/hooks";
 import Logo from "../../../assets/svg/cart.svg?react";
 import styles from "./styles.module.css";
 import { getCartTotalSelector } from "@store/carts/cartsSlice";
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 const { basketContainer, basketQuantity, pumpCartQuantity } = styles;
 
 const HeaderBasket = () => {

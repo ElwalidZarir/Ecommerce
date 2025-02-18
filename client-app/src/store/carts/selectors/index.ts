@@ -4,6 +4,7 @@ import { RootState } from "@store/index";
 const getCartTotalSelector = createSelector(
   (state: RootState) => state.carts.items,
   (items) => {
+    console.log("rendered ");
     const totalQuantity = Object.values(items).reduce(
       (accumulator, current) => {
         return accumulator + current;
@@ -14,4 +15,4 @@ const getCartTotalSelector = createSelector(
   }
 );
 
-export {getCartTotalSelector}
+export { getCartTotalSelector };

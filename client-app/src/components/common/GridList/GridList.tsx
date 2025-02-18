@@ -11,7 +11,7 @@ type THasId = {
 }
 
 const GridList = <T extends THasId> ({ records, renderItem }: TGridList<T>) => {
-  const categoriesList =
+  const itemsList =
     records?.length > 0
       ? records.map((record) => {
           return (
@@ -25,9 +25,9 @@ const GridList = <T extends THasId> ({ records, renderItem }: TGridList<T>) => {
             </Col>
           );
         })
-      : "there are co categories";
+      : "No Result";
 
-  return <Row>{categoriesList}</Row>;
+  return <Row>{itemsList}</Row>;
 };
 
 export default GridList;

@@ -5,7 +5,6 @@ import Home from "@pages/Home";
 import Login from "@pages/Login";
 import Products from "@pages/Products";
 import Register from "@pages/Register";
-import Error from "@pages/Error";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
           if(typeof params.prefix !== "string" || !/^[a-z]+$/i.test(params.prefix)){
             throw new Response("bad request",{
               statusText:"Category not found",
-              status:400
+              status:404
             })
           }
           return true;

@@ -14,12 +14,6 @@ import categories from "@store/categories/categoriesSlice";
 import products from "@store/products/productsSlice";
 import carts from "@store/carts/cartsSlice";
 
-const rootPersistConfig = {
-  key: "root",
-  storage,
-  whitelist: ["carts"],
-};
-
 const cartPersistConfig = {
   key: "carts",
   storage,
